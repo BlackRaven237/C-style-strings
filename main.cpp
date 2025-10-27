@@ -91,6 +91,9 @@ int main(int argc, char** argv){
     return 0;
 }
 
+// Determines and returns the length of a string
+// e.g LongueurChaine("Hello") returns 5
+
 size_t LongueurChaine(const char* chaine){
     const char* debut = chaine;
     while (*chaine != '\0') {
@@ -98,6 +101,9 @@ size_t LongueurChaine(const char* chaine){
     }
     return chaine - debut;
 }
+
+// Copies the value of one string(source) to another (destination)
+// e.g CopierChaine(cpy, "Hello"), here cpy takes the value "Hello"
 
 void CopierChaine(char* destination, const char* source){
     while (*source != '\0') {
@@ -107,6 +113,10 @@ void CopierChaine(char* destination, const char* source){
     // Terminating the copied string with '\0'
     *destination = '\0';
 }
+
+
+// Catenates(Joins) one string(source) at the end of another(destination)
+// e.g ConcateneChaines("Foot", "Ball"), joins "Ball" to "Foot"
 
 void ConcatenerChaines(char* destination, const char* source){
     // Repeating until the original end of destination
@@ -124,6 +134,9 @@ void ConcatenerChaines(char* destination, const char* source){
     *destination = '\0';
 }
 
+//  determines and returns the position of a character in a given string if found
+// e.g TrouverCaractere("Hello", 'o') returns 4 and TrouverCaractere("Hello", 'j') returns a nullptr 
+
 char* TrouverCaractere(const char* chaine, char caractere){
     while (*chaine != '\0') {
         if (*chaine == caractere) return  (char*)chaine; 
@@ -131,6 +144,9 @@ char* TrouverCaractere(const char* chaine, char caractere){
     }
     return nullptr;
 }
+
+// Counts and returns the numbers of times a given character appears in a string
+// e.g CompterOccurrences("Bonjour", 'o') returns 2
 
 size_t CompterOccurrences(const char* chaine, char caractere){
     size_t i = 0;
@@ -140,6 +156,9 @@ size_t CompterOccurrences(const char* chaine, char caractere){
     }
     return i;
 }
+
+// Extracts a portion from a given string depending on a bound
+// e.g ExtraireSousChaine(str, "Hello", 0, 1) generates "He" from "Hello"
 
 void ExtraireSousChaine(char* destination, const char* source, size_t debut, size_t longueur){
     int i;
@@ -152,6 +171,9 @@ void ExtraireSousChaine(char* destination, const char* source, size_t debut, siz
     destination[i] = '\0';
 }
 
+// Copies directly the memory of one string(source) to another (destination)
+// e.g CopierMemoire(zone2, zone1, 10)
+
 void CopierMemoire(void* destination, const void* source, size_t taille){
     // conversion of void* to unsigned char* using static_cast (explicit cast)
     unsigned char* dest = static_cast <unsigned char*> (destination);
@@ -163,6 +185,9 @@ void CopierMemoire(void* destination, const void* source, size_t taille){
     }
 }
 
+// creates and allocates a new space in memory for a string 
+// e.g InitialiserMemoire(zone3, 'X', 5)
+
 void InitialiserMemoire(void* zone, unsigned char valeur, size_t taille){
     unsigned char* modif_zone = static_cast <unsigned char*> (zone);
 
@@ -172,7 +197,10 @@ void InitialiserMemoire(void* zone, unsigned char valeur, size_t taille){
     }
 }
 
- size_t DiviserChaine(const char* chaine, char separateur, char resultat[][100], size_t max_resultats){
+// Divides a string into several substring according to a limiter without affecting the original string and returns the number of substrings generated
+// e.g DiviserChaine("Youmbi,Bovan", ',', result, 10) returns 2 and give rise to the substrings "Youmbi" and "Bovan"
+
+size_t DiviserChaine(const char* chaine, char separateur, char resultat[][100], size_t max_resultats){
     char sous_chaine[max_resultats];
     size_t compteur_resultats = 0, index_courant = 0;
 
@@ -191,12 +219,22 @@ void InitialiserMemoire(void* zone, unsigned char valeur, size_t taille){
     return compteur_resultats;
 }
 
+// Compares two strings and verifies who comes first in the alphabetical order and returns
+// 0 if the strings are the same
+// >0 if chaine1 > chaine2 and
+// <0 if chaine1 < chaine2
+// e.g ComparerChaines("apple", "banana") returns 7 which is >0
+
+
 int ComparerChaines(const char* chaine1, const char* chaine2){
     while (*chaine1 != '\0' && *chaine2 != '\0'){
         if(*chaine1 != *chaine2) return chaine1 - chaine2;
     }
     return 0;
 }
+
+// Converts all characters of a string to lowercase characters 
+// e.g ConvertirMinuscules("Hello") gives "hello"
 
 void ConvertirMinuscules(char* chaine){
     while(*chaine != '\0') {
@@ -206,6 +244,9 @@ void ConvertirMinuscules(char* chaine){
         chaine++;
     }
 }
+
+// Checks if all characters of a string are numerical
+// e.g EstChaineNumerique("12345") returns true and EstChaineNumerique("12a45") returns false
 
 bool EstChaineNumerique(const char* chaine){
     if(*chaine == '-') chaine++;
